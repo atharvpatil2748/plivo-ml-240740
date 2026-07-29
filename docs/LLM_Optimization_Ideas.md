@@ -92,7 +92,7 @@
 
 | Rank | ID | Name | Expected Impact (1-5) | Est Time (hrs) | ROI Score | Risk |
 |---|---|---|---|---|---|---|
-| 1 | A2 | Cosine Warmup LR | 5 | 0.17 | 29.4 | Low |
+| 1 | A2 | Cosine Warmup LR | ~~5~~ **1** | 0.17 | ~~29.4~~ **N/A** | Low | **TESTED (Exp 02) — REJECTED. BPB worsened: 2.3718→2.6976.** |
 | 2 | A1 | AdamW Optimizer | ~~4~~ **1** | 0.08 | ~~25.0~~ **N/A** | Low | **TESTED (Exp 01) — REJECTED. BPB worsened: 2.3718→2.3790. Not effective as standalone change at this scale.** |
 | 3 | A3 | Gradient Clipping | 3 | 0.08 | 18.8 | Low |
 | 4 | B5 | Scaled GPT-2 Init | 3 | 0.17 | 17.6 | Low |

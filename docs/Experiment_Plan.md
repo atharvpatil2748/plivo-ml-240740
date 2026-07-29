@@ -57,6 +57,35 @@ Replacing Adam with AdamW and adding weight decay (0.1) will regularize the mode
 
 ---
 
-# Experiment 02 — (Planned)
+# Experiment 02 — LR Scheduler Ablation
+
+## Research Question
+Can a learning rate schedule (Linear Warmup + Cosine Decay) improve BPB while keeping the optimizer and model unchanged?
+
+## Hypothesis
+A 100-step linear warmup followed by cosine decay will stabilize early training and allow fine-grained convergence near the end of training, lowering BPB.
+
+## Configuration
+- Script: `starter/train_exp02.py`
+- Change: Added 100-step linear warmup + cosine decay.
+- All other hyperparameters identical to Experiment 0 (Adam, peak lr=3e-4)
+
+## Metrics
+
+| Metric                | Baseline (Exp 0) | Experiment 02 (LR Sched) |
+|-----------------------|------------------|--------------------------|
+| **Final Training Loss** | 1.7315         | 1.9637                   |
+| **Dev BPB**           | 2.3718           | 2.6976                   |
+| **Runtime (seconds)** | 54               | 53                       |
+| **Parameter Count**   | 1,339,840        | 1,339,840                |
+
+## Decision
+**REJECTED** — The learning-rate schedule significantly degraded performance. Training loss was much higher (+0.2322) and BPB was significantly worse (+0.3258). The baseline constant learning rate remains superior under the 2000-step training budget.
+
+## Status: ❌ REJECTED
+
+---
+
+# Experiment 03 — Weight Tying (Planned)
 
 ## Status: 🔲 NOT STARTED

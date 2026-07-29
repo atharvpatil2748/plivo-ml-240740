@@ -16,4 +16,19 @@
 
 ---
 
+## Entry 02
+
+| Field          | Value                                                               |
+|----------------|---------------------------------------------------------------------|
+| **Experiment** | Experiment 02                                                       |
+| **Objective**  | Learning Rate Scheduler Ablation                                    |
+| **Hypothesis** | Linear Warmup + Cosine Decay will improve convergence and lower BPB.|
+| **Outcome**    | ❌ REJECTED                                                          |
+| **Reason**     | Warmup + Cosine significantly increased BPB (2.3718 → 2.6976).      |
+| **Lessons Learned** | For this very small training budget (2000 steps), a constant learning rate appears better than this scheduler. |
+| **Action**     | Move focus away from optimizer/scheduler tuning and investigate model representational improvements. Proceed to Experiment 03. |
+| **Date**       | 2026-07-30                                                           |
+
+---
+
 (Further entries to be added as experiments complete.)
