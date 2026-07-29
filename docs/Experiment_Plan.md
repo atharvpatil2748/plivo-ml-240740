@@ -142,4 +142,37 @@ Scaling `n_embd` from 160 to 192 will utilize ~563k unused parameters and give t
 ## Decision
 **✅ ACCEPTED — BEST PERFORMING CONFIGURATION.** BPB improved by −0.0246 over the baseline. This is the final submission checkpoint. The change was merged into `starter/model.py` as the new default architecture.
 
-## Status: ✅ WINNER / FINAL SUBMISSION
+---
+
+# Experiment 05 — Modern Transformer + BPE ✅ NEW WINNER
+
+## Research Question
+Can a modern transformer architecture (RMSNorm, RoPE, SwiGLU, Weight Tying) combined with a Byte-Level BPE tokenizer significantly outperform the baseline model?
+
+## Hypothesis
+Replacing the naive baseline (LayerNorm, GELU, learned absolute position embeddings, raw byte tokenizer) with modern architecture features (RMSNorm, SwiGLU, RoPE, Weight Tying) and subword byte-level BPE will dramatically improve representational efficiency and lower BPB.
+
+## Configuration
+- Script: `starter/train_exp05_modern_transformer.py`
+- Model: Modern Transformer (`RMSNorm`, `RoPE`, `SwiGLU`, Weight Tying)
+- Tokenizer: Byte-Level BPE (Vocab 512, 100% Lossless roundtrip)
+- `n_layer`: 4
+- `n_head`: 6
+- `n_embd`: 192
+- `hidden_dim`: 512
+- Parameter Count: **1,869,504** (93.5% of 2M cap)
+- Hyperparameters: Adam optimizer, constant lr=3e-4, 2,000 steps, batch size 8, seed 1337.
+
+## Metrics
+
+| Metric                | Baseline (Exp 0) | Exp 04 (Capacity) | Experiment 05 (Modern Arch + BPE) |
+|-----------------------|------------------|-------------------|-----------------------------------|
+| **Final Training Loss** | 1.7315         | —                 | **1.6043**                        |
+| **Dev BPB**           | 2.3718           | 2.3472            | **2.0074**                        |
+| **Runtime (seconds)** | 54               | 55                | ~80                               |
+| **Parameter Count**   | 1,339,840        | 1,902,720         | **1,869,504**                     |
+
+## Decision
+**✅ ACCEPTED — NEW WINNER.** Dev BPB dropped from 2.3718 → 2.0074 (−0.3644 BPB improvement, 15.4% reduction). This is the new submission candidate.
+
+## Status: ✅ WINNER / PENDING VERIFICATION RUN
