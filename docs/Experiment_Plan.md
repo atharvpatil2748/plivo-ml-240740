@@ -86,6 +86,37 @@ A 100-step linear warmup followed by cosine decay will stabilize early training 
 
 ---
 
-# Experiment 03 — Weight Tying (Planned)
+---
+
+# Experiment 03 — Weight Tying
+
+## Research Question
+Can weight tying improve parameter efficiency while maintaining or improving BPB?
+
+## Hypothesis
+Tying the output head weights to the token embedding weights will reduce the overall parameter count while acting as a regularizer, potentially improving or matching the baseline BPB.
+
+## Configuration
+- Script: `starter/train_exp03_weight_tying.py`
+- Change: Enabled `cfg.tie_weights = True`.
+- All other hyperparameters identical to Experiment 0 (Adam, peak lr=3e-4, 2000 steps).
+
+## Metrics
+
+| Metric                | Baseline (Exp 0) | Experiment 03 (Weight Tying) |
+|-----------------------|------------------|------------------------------|
+| **Final Training Loss** | 1.7315         | 1.7651                       |
+| **Dev BPB**           | 2.3718           | 2.4122                       |
+| **Runtime (seconds)** | 55               | 54                           |
+| **Parameter Count**   | 1,339,840        | 1,298,880                    |
+
+## Decision
+**REJECTED FOR FINAL SUBMISSION** — Weight tying reduced parameter count by approximately 41k parameters but produced slightly worse BPB (+0.0404). While the performance degradation is relatively small, weight tying is not the best choice for minimizing BPB under the assignment objective given that we have ~700k unused parameters.
+
+## Status: ❌ REJECTED
+
+---
+
+# Experiment 04 — (Planned)
 
 ## Status: 🔲 NOT STARTED

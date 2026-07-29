@@ -31,4 +31,19 @@
 
 ---
 
+## Entry 03
+
+| Field          | Value                                                               |
+|----------------|---------------------------------------------------------------------|
+| **Experiment** | Experiment 03                                                       |
+| **Objective**  | Weight Tying Ablation                                               |
+| **Hypothesis** | Weight tying will improve parameter efficiency without degrading BPB. |
+| **Outcome**    | ❌ REJECTED FOR FINAL SUBMISSION                                     |
+| **Reason**     | Reduced parameter count by ~41k but produced slightly worse BPB (2.4122 vs 2.3718 baseline). |
+| **Lessons Learned** | - Constant-LR Adam baseline remains the strongest performer. <br> - Weight tying sacrifices a small amount of accuracy in exchange for fewer parameters. <br> - The assignment still has approximately 700k unused parameters. <br> - Future experiments should focus on increasing representational capacity rather than additional optimizer tricks. |
+| **Action**     | Do not include weight tying as a standalone optimization. Prepare for Experiment 04. |
+| **Date**       | 2026-07-30                                                           |
+
+---
+
 (Further entries to be added as experiments complete.)
