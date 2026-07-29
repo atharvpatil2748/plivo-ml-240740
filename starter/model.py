@@ -14,7 +14,7 @@ class Config:
     block_size = 128
     n_layer = 4
     n_head = 4
-    n_embd = 160
+    n_embd = 192          # ← increased from 160 (Exp04: best BPB 2.3472, 1,902,720 params)
     dropout = 0.0
     tie_weights = False   # <- one of many things worth questioning
 

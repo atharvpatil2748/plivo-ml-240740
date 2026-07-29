@@ -46,4 +46,19 @@
 
 ---
 
+## Entry 04 ✅ WINNER
+
+| Field          | Value                                                               |
+|----------------|---------------------------------------------------------------------|
+| **Experiment** | Experiment 04                                                       |
+| **Objective**  | Model Capacity Scaling                                              |
+| **Hypothesis** | Scaling n_embd from 160 to 192 will improve BPB by using the remaining parameter budget. |
+| **Outcome**    | ✅ ACCEPTED — Best BPB achieved.                                    |
+| **Result**     | BPB improved from 2.3718 → 2.3472 (−0.0246). Params: 1,902,720.   |
+| **Reason**     | The model was capacity-constrained. Experiments 01–03 proved regularization/efficiency approaches fail when the model is underfitting. Scaling n_embd addressed the root cause. |
+| **Action**     | Merged n_embd=192 into starter/model.py as the new default. Checkpoint copied to submission/. Repository finalized. |
+| **Date**       | 2026-07-30                                                           |
+
+---
+
 (Further entries to be added as experiments complete.)

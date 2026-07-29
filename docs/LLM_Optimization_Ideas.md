@@ -98,7 +98,7 @@
 | 4 | B5 | Scaled GPT-2 Init | 3 | 0.17 | 17.6 | Low |
 | 5 | B6 | Increased Block Size (256) | 4 | 0.17 | 23.5 | Low |
 | 6 | B1 | Weight Tying | ~~3~~ **1** | 0.08 | ~~37.5~~ **N/A** | Low | **TESTED (Exp 03) — REJECTED. BPB worsened: 2.3718→2.4122. Param count reduced by 41k.** |
-| 7 | B7 | Parameter Capacity Scaling | 4 | 0.25 | 16.0 | Low |
+| 7 | B7 | Parameter Capacity Scaling | **5** | 0.25 | **N/A** | Low | **TESTED (Exp 04) — ✅ WINNER. BPB improved: 2.3718→2.3472. n_embd 160→192, params 1,339,840→1,902,720.** |
 | 8 | B2 | SwiGLU MLP | 4 | 0.50 | 8.0 | Low |
 | 9 | C1 | BPE Tokenizer (Vocab 2048) | 5 | 0.75 | 6.7 | Medium |
 | 10| C2 | BPE Tokenizer (Vocab 4096) | 5 | 1.00 | 5.0 | Medium |

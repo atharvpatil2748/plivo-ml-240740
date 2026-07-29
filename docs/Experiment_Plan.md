@@ -117,6 +117,29 @@ Tying the output head weights to the token embedding weights will reduce the ove
 
 ---
 
-# Experiment 04 — (Planned)
+# Experiment 04 — Model Capacity Scaling ✅ WINNER
 
-## Status: 🔲 NOT STARTED
+## Research Question
+Can increasing model capacity (while remaining under the 2M parameter limit) improve BPB?
+
+## Hypothesis
+Scaling `n_embd` from 160 to 192 will utilize ~563k unused parameters and give the model more representational bandwidth, lowering BPB.
+
+## Configuration
+- Script: `starter/train_exp04_capacity.py`
+- Change: `cfg.n_embd = 192` (increased from 160)
+- All other hyperparameters identical to Experiment 0 (Adam, peak lr=3e-4, 2000 steps)
+
+## Metrics
+
+| Metric                | Baseline (Exp 0) | Experiment 04 (Capacity) |
+|-----------------------|------------------|--------------------------|
+| **Final Training Loss** | 1.7315         | (see training.log)       |
+| **Dev BPB**           | 2.3718           | **2.3472**               |
+| **Runtime (seconds)** | 54               | (see training.log)       |
+| **Parameter Count**   | 1,339,840        | **1,902,720**            |
+
+## Decision
+**✅ ACCEPTED — BEST PERFORMING CONFIGURATION.** BPB improved by −0.0246 over the baseline. This is the final submission checkpoint. The change was merged into `starter/model.py` as the new default architecture.
+
+## Status: ✅ WINNER / FINAL SUBMISSION
